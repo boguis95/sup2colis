@@ -1,14 +1,14 @@
 "use client";
 import Colis from '../list/page';
-import { useRouter } from 'next/navigation'; // Correction de l'importation
+import { useRouter } from 'next/navigation'; 
 import { useEffect, useState } from 'react';
-import { db } from '@/app/firebase'; // Assurez-vous que le chemin est correct
+import { db } from '@/app/firebase'; 
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 export default function ModifierColis({params}) {
     const [colis, setColis] = useState({ adresse: '', poids: '', destination: '' });
     const router = useRouter();
-    const id = params.id // Accéder à l'ID via query
+    const id = params.id 
 
     useEffect(() => {
         const chargerColis = async () => {
@@ -16,10 +16,9 @@ export default function ModifierColis({params}) {
                 const colisRef = doc(db, 'colis', id);
                 const colisSnap = await getDoc(colisRef);
                 if (colisSnap.exists()) {
-                    setColis(colisSnap.data()); // Ceci préremplira les champs
+                    setColis(colisSnap.data()); 
                 } else {
                     console.log("Le colis n'existe pas !");
-                    // Optionnel : rediriger ou afficher une notification
                 }
             }
         };
@@ -44,7 +43,6 @@ export default function ModifierColis({params}) {
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-semibold mb-4">Mettre à jour le colis</h1>
             <form onSubmit={handleSubmit}>
-                {/* Les champs du formulaire ici */}
                 <div className="mb-4">
                     <label>Adresse</label>
                     <input

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { db } from './firebase'; // Assurez-vous que le chemin d'importation est correct
+import { db } from './firebase'; 
 import { doc, getDoc } from 'firebase/firestore';
 import Link from 'next/link';
 
@@ -12,8 +12,8 @@ export default function Home() {
 
   const handleTrack = async (e) => {
     e.preventDefault();
-    setError(''); // Réinitialiser le message d'erreur
-    setParcelData(null); // Réinitialiser les données du colis
+    setError(''); 
+    setParcelData(null); 
 
     if (!trackingId) {
       setError("Veuillez entrer un ID de suivi.");

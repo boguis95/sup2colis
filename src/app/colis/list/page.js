@@ -2,7 +2,7 @@
 "use client"
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { db } from '@/app/firebase'; // Assurez-vous que le chemin est correct
+import { db } from '@/app/firebase'; 
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 
 export default function Colis() {
@@ -23,16 +23,14 @@ export default function Colis() {
     // Supprimer un colis
     const supprimerColis = async (id) => {
         await deleteDoc(doc(db, 'colis', id));
-        fetchColis(); // Recharger les colis après la suppression
+        fetchColis(); 
     };
 
     return (
         <div className="container mx-auto p-4">
             
             <h1 className="text-2xl font-semibold mb-4">Liste des Colis</h1>
-            <Link href={"/colis/ajout"} className="mr-2 p-2 mb-15 text-white bg-blue-500 hover:bg-blue-700 rounded">
-                            Ajouter un colis
-                </Link>
+          
             <div>
                 {colis.map((colis) => (
                     <div key={colis.id} className="mb-4 p-2 border rounded">
